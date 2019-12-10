@@ -14,11 +14,11 @@ export class LoginComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private router: Router) { }
 
-  onSubmit() {
+  onClickSubmit(loginDetails) {
     if (this.loginForm.invalid) {
       return;
     }
-    this.router.navigate(['list-employee']);
+    this.router.navigate(['add-employee']);
   }
   ngOnInit() {
     this.loginForm = this.formBuilder.group({

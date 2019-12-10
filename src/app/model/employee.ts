@@ -2,9 +2,9 @@ export interface Employee {
     empId: string;
     empName: string;
     homeTown: string;
-    sex: boolean;
+    gender: boolean;
     dateOfJoining: Date;
-    martialStatus: string;
+    maritalStatus: string;
     dob: Date;
     ratingOfCompany: string;
     createdAt: Date;
