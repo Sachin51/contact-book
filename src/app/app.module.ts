@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbDatepickerConfig } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 
@@ -30,7 +30,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     NgbModule,
     AngularFontAwesomeModule
   ],
-  providers: [],
+  providers: [NgbDatepickerConfig],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

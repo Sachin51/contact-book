@@ -2,7 +2,7 @@ import { EmployeeService } from './../../service/employee.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { NgbDateStruct, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDateStruct, NgbCalendar, NgbDatepickerConfig } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -12,14 +12,19 @@ import { NgbDateStruct, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
 })
 export class AddEmployeeComponent implements OnInit {
 
-  ratingOfCompany = 8;
   dob: NgbDateStruct;
   dateOfJoining: NgbDateStruct;
   addEmployeeForm: FormGroup;
-  date: { year: number, month: number };
+  //date: { year: number, month: number };
+  ratingOfCompany = 8;
 
   constructor(private formBuilder: FormBuilder, private router: Router, private employeeService: EmployeeService,
-    private calendar: NgbCalendar) { }
+    private calendar: NgbCalendar, private dobConfig: NgbDatepickerConfig, private dateOfJoiningConfig: NgbDatepickerConfig) { 
+      dobConfig.maxDate = { year: (new Date().getFullYear()-18), month: new Date().getMonth(), day: new Date().getDay()};
+      dobConfig.minDate = { year: (new Date().getFullYear()-60), month: new Date().getMonth(), day: new Date().getDay()};
+      
+     // dateOfJoiningConfig.maxDate = { year: new Date().getFullYear(), month: new Date().getMonth(), day: new Date().getDay()};
+    }
 
   ngOnInit() {
     this.addEmployeeForm = this.formBuilder.group({
@@ -29,7 +34,7 @@ export class AddEmployeeComponent implements OnInit {
       dateOfJoining: ['', Validators.required],
       maritalStatus: ['', Validators.required],
       dob: ['', Validators.required],
-      ratingOfCompany: ['', Validators.required],
+      ratingOfCompany: ['8', Validators.required],
       createdAt: [],
       updatedAt: []
     });
@@ -40,6 +45,7 @@ export class AddEmployeeComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log(this.addEmployeeForm.value);
     this.employeeService.addEmpplyee(this.addEmployeeForm.value)
       .subscribe(data => {
         this.router.navigate(['list-employee']);

@@ -3,12 +3,14 @@
     <form [formGroup]="addEmployeeForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
             <label for="empName">Employee Name:</label>
-            <input type="text" formControlName="empName" name="empName" placeholder="Employee Name" class="form-control" id="empName">
+            <input type="text" formControlName="empName" name="empName" placeholder="Employee Name" class="form-control"
+                id="empName">
         </div>
 
         <div class="form-group">
             <label for="homeTown">Home Town:</label>
-            <input type="text" formControlName="homeTown" name="homeTown" placeholder="Home town" class="form-control" id="homeTown">
+            <input type="text" formControlName="homeTown" name="homeTown" placeholder="Home town" class="form-control"
+                id="homeTown">
         </div>
 
         <div class="form-group">
@@ -24,32 +26,30 @@
                 </label>
             </div>
         </div>
-         <div class="form-group">
+        <div class="form-group">
             <label>Date of Birth:</label>
             <div class="input-group">
-                <!-- <input class="form-control" placeholder="yyyy-mm-dd" formControlName="dob" ngbDatepicker
-                    #d="ngbDatepicker">
+                <input class="form-control" placeholder="dd-mm-yyyy" name="dob" formControlName="dob" ngbDatepicker
+                    #d1="ngbDatepicker" [minDate]="{year: 2001, month: 1, day: 1}"
+                    [maxDate]="{year: 2007, month: 12, day: 1}">
                 <div class="input-group-append">
-                    <button class="btn btn-outline-secondary calendar fa fa-calendar" (click)="d.toggle()"
-                        type="button"></button>
-                </div> -->
-                <ngb-datepicker [minDate]="{year: 2010, month: 1, day: 1}"
-                                [maxDate]="{year: 2048, month: 12, day: 31}"
-                                [markDisabled]="isDisabled">
-                </ngb-datepicker>
-            </div>
-        </div> 
-        <!--<div class="form-group">
-            <label>Date of Joining:</label>
-            <div class="input-group">
-                <input class="form-control" placeholder="yyyy-mm-dd" name="dateOfJoining" formControlName="dateOfJoining" ngbDatepicker
-                    #d="ngbDatepicker">
-                <div class="input-group-append">
-                    <button class="btn btn-outline-secondary calendar fa fa-calendar" (click)="d.toggle()"
+                    <button class="btn btn-outline-secondary calendar fa fa-calendar" (click)="d1.toggle()"
                         type="button"></button>
                 </div>
             </div>
-        </div> -->
+        </div>
+        <div class="form-group">
+            <label>Date of Joining:</label>
+            <div class="input-group">
+                <input class="form-control" placeholder="dd-mm-yyyy" name="dateOfJoining"
+                    formControlName="dateOfJoining" ngbDatepicker #d2="ngbDatepicker"
+                    [minDate]="{year: 1991, month: 1, day: 1}" [maxDate]="{year: 1999, month: 12, day: 1}">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary calendar fa fa-calendar" (click)="d2.toggle()"
+                        type="button"></button>
+                </div>
+            </div>
+        </div>
         <div class="form-group">
             <label for="maritalStatus">Marital Status</label>
             <select formControlName="maritalStatus" name="maritalStatus" class="form-control">
@@ -61,21 +61,25 @@
                 <option value="dwtd">Don't want to disclose</option>
             </select>
         </div>
-        <!-- <div class="form-group">
+        <div class="form-group">
             <label>Rating of Company</label>
-            <ngb-rating [(rate)]="ratingOfCompany" formControlName="ratingOfCompany"></ngb-rating>
-            <hr>
-            <pre>Rate: <b>{{ratingOfCompany}}</b></pre>
-        </div> -->
+            <div class="row">
+                <label class="md-check col-md-4">
+                    <ngb-rating [(rate)]="ratingOfCompany" formControlName="ratingOfCompany" name="ratingOfCompany">
+                    </ngb-rating>
+                </label>
+                <label class="md-check col-md-2">
+                    <pre><b>{{ratingOfCompany}}</b></pre>
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-success" [disabled]="addEmployeeForm.invalid">Submit</button>
+        </div>
     </form>
 </div>
 
-<!-- empName: ['', Validators.required],
-homeTown: ['', Validators.required],
-sex: ['', Validators.required],
-dateOfJoining: ['', Validators.required],
-martialStatus: ['', Validators.required],
-dob: ['', Validators.required],
+<!-- 
 ratingOfCompany: ['', Validators.required],
 createdAt: [],
 updatedAt: [] -->
