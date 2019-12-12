@@ -12,12 +12,12 @@ export class EmployeeService {
   constructor(private httpClient: HttpClient) { }
 
   getEmployees() :Observable<any> {
-    return this.httpClient.get<any>(this.baseUrl +'/getAllEmployees');
+    return this.httpClient.get<any>(this.baseUrl +'getAllEmployees');
   }
 
-  addEmpplyee(employee: Employee) : Observable<any> {
+  addEmployee(employee: Employee) : Observable<any> {
     console.log('Employee: '+employee);
     
-    return this.httpClient.post<any>(this.baseUrl, employee);
+    return this.httpClient.post<any>(this.baseUrl+'addEmployee', employee);
   }
 }

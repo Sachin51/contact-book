@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-    this.router.navigate(['add-employee']);
+    this.router.navigate(['list-employee']);
   }
   ngOnInit() {
     this.loginForm = this.formBuilder.group({

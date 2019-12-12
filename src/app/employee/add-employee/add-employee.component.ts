@@ -46,9 +46,18 @@ export class AddEmployeeComponent implements OnInit {
 
   onSubmit() {
     console.log(this.addEmployeeForm.value);
-    this.employeeService.addEmpplyee(this.addEmployeeForm.value)
+    var formValue = this.addEmployeeForm.value;
+    this.addEmployeeForm.value.dateOfJoining = Date.parse(new Date(formValue.dateOfJoining.year,
+      formValue.dateOfJoining.month - 1, formValue.dateOfJoining.day, 0, 0, 0).toDateString());
+      
+    this.addEmployeeForm.value.dob = Date.parse(new Date(formValue.dob.year,
+      formValue.dob.month - 1, formValue.dob.day, 0, 0, 0).toDateString());
+      
+
+      console.log(this.addEmployeeForm.value);
+    this.employeeService.addEmployee(this.addEmployeeForm.value)
       .subscribe(data => {
-        this.router.navigate(['list-employee']);
-      });
+      this.router.navigate(['list-employee']);
+    });
   }
 }

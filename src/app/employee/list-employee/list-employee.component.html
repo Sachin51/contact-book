@@ -1,1 +1,6 @@
 <p>list-employee works!</p>
+{{employees}}
+{{errorMsg}}
+<li *ngFor="let hero of employees">
+    {{ hero | json }}
+</li>
