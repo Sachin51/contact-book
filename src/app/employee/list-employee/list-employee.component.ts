@@ -1,11 +1,13 @@
 import { EmployeeService } from './../../service/employee.service';
 import { Component, OnInit } from '@angular/core';
 import { Employee } from 'src/app/model/employee';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'app-list-employee',
   templateUrl: './list-employee.component.html',
-  styleUrls: ['./list-employee.component.css']
+  styleUrls: ['./list-employee.component.css'],
+  providers:[DecimalPipe]
 })
 export class ListEmployeeComponent implements OnInit {
 
