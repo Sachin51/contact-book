@@ -1,9 +1,8 @@
 import { Employee } from 'src/app/model/employee';
-import { Employee } from './../model/employee';
 import { HttpClient } from '@angular/common/http';
 import { Injectable, PipeTransform } from '@angular/core';
 import { Observable, BehaviorSubject, Subject } from 'rxjs';
-
+import { map } from 'rxjs/operators';
 
 interface SearchResult {
   employees: Employee[];
